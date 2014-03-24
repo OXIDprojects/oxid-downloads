@@ -1,0 +1,9 @@
+[Builder]
+build = 28
+
+[Package info]
+revision = "1ba99c94c3a1efacb84e6a31a50055d867b9a6c8"
+edition = "CE"
+version = "4.7.10"
+encoder-version = ""
+timestamp = "2014-01-03 09:40:36"
