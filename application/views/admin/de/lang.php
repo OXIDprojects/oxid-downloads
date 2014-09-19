@@ -1504,6 +1504,7 @@ $aLang = array(
 'USERGROUP_LIST_MENUSUBITEM'                               => 'Benutzergruppen',
 'USERGROUP_MAIN_MEMBERINGROUP'                             => 'Mitglieder der Benutzergruppe',
 'USERGROUP_MAIN_ALLMEMBERS'                                => 'Alle Benutzer',
+'USERGROUP_ID'                                             => 'Gruppen-ID',
 'VENDOR_LIST_MENUITEM'                                     => 'Stammdaten',
 'VENDOR_LIST_MENUSUBITEM'                                  => 'Lieferanten',
 'VENDOR_LIST_TITLE'                                        => '[OXID Lieferantenverwaltung]',
@@ -1855,11 +1856,11 @@ $aLang = array(
 'serial_updated'                                           => 'Lizenzschlüssel wurde aktualisiert',
 
 // Shop licensing problems
-'SHOP_LICENSE_ERROR_GRACE_EXPIRED'                         => 'Der Lizenzkey Ihres OXID eShop ist endgültig abgelaufen. Bitte kontaktieren Sie den Technischen Support.',
+'SHOP_LICENSE_ERROR_GRACE_EXPIRED'                         => 'Der Lizenzschlüssel Ihres OXID eShop ist endgültig abgelaufen. Bitte kontaktieren Sie den Technischen Support.',
 'SHOP_LICENSE_ERROR_GRACE_WILL_EXPIRE'                     => 'Der Lizenzschlüssel Ihres OXID eShop ist abgelaufen. Dieser OXID eShop wird innerhalb der nächsten 24 Stunden offline gehen. Bitte geben Sie einen gültigen Lizenzschlüssel ein oder wenden Sie sich an den technischen Support.',
-'SHOP_LICENSE_ERROR_shop_unlicensed'                       => 'Es ist ein Problem mit dem Lizenzkey Ihres OXID eShop aufgetreten. Aus diesem Grund wurde ein stiller Countdown von 7 Tagen gestartet. Nach Ablauf der Frist wird der OXID eShop offline gehen. Bitte geben Sie den gültigen Lizenzkey erneut ein oder kontaktieren Sie den Technischen Support!',
-'SHOP_LICENSE_ERROR_serial_expired'                        => 'Der Lizenzkey Ihres OXID eShop ist abgelaufen. Aus diesem Grund wurde ein stiller Countdown von 7 Tagen gestartet. Nach Ablauf der Frist wird der OXID eShop offline gehen. Bitte geben Sie einen gültigen Lizenzkey ein oder kontaktieren Sie den Technischen Support!',
-'SHOP_LICENSE_ERROR_incorrect_mandate_amount'              => 'Die Anzahl der lizensierten Subshops wurde überschritten. Aus diesem Grund wurde ein stiller Countdown von 7 Tagen gestartet. Nach Ablauf der Frist wird der OXID eShop offline gehen. Bitte geben Sie einen gültigen Lizenzkey ein oder kontaktieren Sie den Technischen Support!',
+'SHOP_LICENSE_ERROR_shop_unlicensed'                       => 'Es ist ein Problem mit dem Lizenzschlüssel Ihres OXID eShop aufgetreten. Aus diesem Grund wurde ein stiller Countdown von 7 Tagen gestartet. Nach Ablauf der Frist wird der OXID eShop offline gehen. Bitte geben Sie den gültigen Lizenzschlüssel erneut ein oder kontaktieren Sie den Technischen Support!',
+'SHOP_LICENSE_ERROR_serial_expired'                        => 'Der Lizenzschlüssel Ihres OXID eShop ist abgelaufen. Aus diesem Grund wurde ein stiller Countdown von 7 Tagen gestartet. Nach Ablauf der Frist wird der OXID eShop offline gehen. Bitte geben Sie einen gültigen Lizenzschlüssel ein oder kontaktieren Sie den Technischen Support!',
+'SHOP_LICENSE_ERROR_incorrect_mandate_amount'              => 'Die Anzahl der lizensierten Subshops wurde überschritten. Aus diesem Grund wurde ein stiller Countdown von 7 Tagen gestartet. Nach Ablauf der Frist wird der OXID eShop offline gehen. Bitte geben Sie einen gültigen Lizenzschlüssel ein oder kontaktieren Sie den Technischen Support!',
 'SHOP_LICENSE_ERROR_INFORMATION'                           => 'OXID eShop Lizenzinformation',
 
 'SHOP_OPTIONS_GROUP_GLOBAL'                                => 'Global',
@@ -2136,7 +2137,8 @@ $aLang = array(
 
 'OMVN_ERROR_REQUEST_FAILED'                                => 'Dienst nicht verfügbar. Bitte versuchen Sie es später noch einmal. Falls das Problem weiterhin bestehen sollte, überprüfen Sie bitte, dass Ihr Shop ausgehende Verbindungen aufbauen kann.',
 
-'VERSION_UPDATE_LINK'                                         => 'http://www.oxid-esales.com/de/support-services/dokumentation-und-hilfe/oxid-eshop/installation/oxid-eshop-aktualisieren/update-vorbereiten.html',
+'VERSION_UPDATE_LINK'                                      => 'http://www.oxid-esales.com/de/support-services/dokumentation-und-hilfe/oxid-eshop/installation/oxid-eshop-aktualisieren/update-vorbereiten.html',
+'MESSAGE_FOR_NEWLY_CREATED_USER_GROUPS'                    => 'Falls ein Nutzer den Shop mittels einer bestimmten URL erreicht, welche die Gruppen-ID einer Benutzer-Gruppe beinhaltet, so wird er automatisch der Benutzergruppe zugeordnet, deren ID mit der in der URL Enthaltenen korrespondiert.<br> Sollten Sie dieses Verhalten deaktivieren wollen, navigieren Sie bitte zu "Stammdaten->Grundeinstellungen->System->Weitere Einstellungen" und fügen Sie die ID der Benutzergruppe der Liste "Benutzergruppen, für welche die Dynamische Nutzer Gruppen Zuordnung durch DGR URL Parameter nicht erlaubt sind" hinzu.'
 );
 
 /*

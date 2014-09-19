@@ -16,7 +16,7 @@
  * along with OXID eSales Mobile Theme.  If not, see <http://www.gnu.org/licenses/>.
  *
  * @link      http://www.oxid-esales.com
- * @copyright (C) OXID eSales AG 2003-2013
+ * @copyright (C) OXID eSales AG 2003-2014
  */
 
 /**
@@ -27,6 +27,6 @@ $aTheme = array(
     'title'        => 'OXID eShop mobile theme',
     'description'  => 'Your OXID eShop on mobile devices',
     'thumbnail'    => 'theme.jpg',
-    'version'      => '1.2.0',
+    'version'      => '1.2.1',
     'author'       => 'OXID'
 );

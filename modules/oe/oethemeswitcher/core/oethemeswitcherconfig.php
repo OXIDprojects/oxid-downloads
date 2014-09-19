@@ -16,7 +16,7 @@
  * along with OXID eSales Theme Switcher.  If not, see <http://www.gnu.org/licenses/>.
  *
  * @link      http://www.oxid-esales.com
- * @copyright (C) OXID eSales AG 2003-2013
+ * @copyright (C) OXID eSales AG 2003-2014
  */
 
 /**
@@ -83,7 +83,7 @@ class oeThemeSwitcherConfig extends oeThemeSwitcherConfig_parent
     /**
      * Return theme manager
      *
-     * @return oeThemeSwitcgetActiveThemeIdherThemeManager
+     * @return oeThemeSwitcherThemeManager
      */
     public function oeThemeSwitcherGetThemeManager()
     {

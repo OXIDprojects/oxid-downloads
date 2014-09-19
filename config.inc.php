@@ -18,10 +18,6 @@
  * @link      http://www.oxid-esales.com
  * @copyright (C) OXID eSales AG 2003-2014
  * @version   OXID eShop CE
- *
- * @link      http://www.oxid-esales.com
- * @package   main
- * @copyright (c) OXID eSales AG 2003-#OXID_VERSION_YEAR#
  */
 
     /** @name database information */
