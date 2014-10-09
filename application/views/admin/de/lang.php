@@ -1538,6 +1538,7 @@ $aLang = array(
 'USERGROUP_LIST_MENUSUBITEM'                               => 'Benutzergruppen',
 'USERGROUP_MAIN_MEMBERINGROUP'                             => 'Mitglieder der Benutzergruppe',
 'USERGROUP_MAIN_ALLMEMBERS'                                => 'Alle Benutzer',
+'USERGROUP_ID'                                             => 'Gruppen-ID',
 'VENDOR_LIST_MENUITEM'                                     => 'Stammdaten',
 'VENDOR_LIST_MENUSUBITEM'                                  => 'Lieferanten',
 'VENDOR_LIST_TITLE'                                        => '[OXID Lieferantenverwaltung]',
@@ -2049,6 +2050,7 @@ $aLang = array(
 'TOTAL_PLUS_PROPORTIONAL_VAT'                              => "plus MwSt. (anteilig berechnet)",
 
 'BUTTON_DOWNLOAD'                                          => 'Herunterladen',
+'MESSAGE_FOR_NEWLY_CREATED_USER_GROUPS'                    => 'Falls ein Nutzer den Shop mittels einer bestimmten URL erreicht, welche die Gruppen-ID einer Benutzer-Gruppe beinhaltet, so wird er automatisch der Benutzergruppe zugeordnet, deren ID mit der in der URL Enthaltenen korrespondiert.<br> Sollten Sie dieses Verhalten deaktivieren wollen, navigieren Sie bitte zu "Stammdaten->Grundeinstellungen->System->Weitere Einstellungen" und fügen Sie die ID der Benutzergruppe der Liste "Benutzergruppen, für welche die Dynamische Nutzer Gruppen Zuordnung durch DGR URL Parameter nicht erlaubt sind" hinzu.'
 );
 
 /*

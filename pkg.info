@@ -1,9 +1,9 @@
 [Builder]
-build = 71
+build = 82
 
 [Package info]
-revision = "c891d3dd247af7e711d42bbb98e23870d9c073a0"
+revision = "607b7ef363e05e5fe25290198c13bc1d171afdd2"
 edition = "CE"
-version = "4.7.12"
+version = "4.7.13"
 encoder-version = ""
-timestamp = "2014-06-06 09:15:31"
+timestamp = "2014-07-17 19:48:10"
