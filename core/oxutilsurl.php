@@ -292,9 +292,6 @@ class oxUtilsUrl extends oxSuperCfg
             $blCurrent = true;
         } else {
             $aHosts = $this->_getHosts();
-            if (is_null($aHosts)) {
-                $aHosts = array($this->_getShopHostName());
-            }
 
             foreach ($aHosts as $sHost) {
                 if ($sHost === $sUrlHost) {
@@ -442,6 +439,35 @@ class oxUtilsUrl extends oxSuperCfg
         return $aParams;
     }
 
+    /**
+     * Extracts host from given url and appends $aHosts with it
+     *
+     * @param string $sUrl    url to extract
+     * @param array  &$aHosts hosts array
+     */
+    protected function _addHost($sUrl, &$aHosts)
+    {
+        if ($sUrl && ($sHost = @parse_url($sUrl, PHP_URL_HOST))) {
+            if (!in_array($sHost, $aHosts)) {
+                $aHosts[] = $sHost;
+            }
+        }
+    }
+    
+    /**
+     * Appends language urls to $aHosts.
+     *
+     * @param array $aLanguageUrls array of language urls to extract
+     * @param array &$aHosts       hosts array
+     */
+    protected function _addLanguageHost($aLanguageUrls, & $aHosts)
+    {
+        $iLanguageId = oxRegistry::getLang()->getBaseLanguage();
+
+        if (isset($aLanguageUrls[$iLanguageId])) {
+            $this->_addHost($aLanguageUrls[$iLanguageId], $aHosts);
+        }
+    }
 
     /**
      * Collects and returns current shop hosts array.
@@ -450,8 +476,35 @@ class oxUtilsUrl extends oxSuperCfg
      */
     protected function _getHosts()
     {
+        if ($this->_aHosts === null) {
+            $this->_aHosts = array();
+            $oConfig = $this->getConfig();
+
+            $this->_addMallHosts($this->_aHosts);
+
+            // language url
+            $this->_addLanguageHost($oConfig->getConfigParam('aLanguageURLs'), $this->_aHosts);
+            $this->_addLanguageHost($oConfig->getConfigParam('aLanguageSSLURLs'), $this->_aHosts);
+
+            // current url
+            $this->_addHost($oConfig->getConfigParam("sShopURL"), $this->_aHosts);
+            $this->_addHost($oConfig->getConfigParam("sSSLShopURL"), $this->_aHosts);
+
+            if ($this->isAdmin()) {
+                $this->_addHost($oConfig->getConfigParam("sAdminSSLURL"), $this->_aHosts);
+            }
+        }
 
         return $this->_aHosts;
+    }
+
+    /**
+     * Appends shop mall urls to $aHosts.
+     *
+     * @param array &$aHosts hosts array
+     */
+    protected function _addMallHosts(& $aHosts)
+    {
     }
 
     /**
@@ -476,15 +529,5 @@ class oxUtilsUrl extends oxSuperCfg
         }
 
         return $sSeparator;
-    }
-
-    /**
-     * Returns shop host name.
-     *
-     * @return string
-     */
-    private function _getShopHostName()
-    {
-        return @parse_url($this->getConfig()->getShopUrl(), PHP_URL_HOST);
     }
 }
