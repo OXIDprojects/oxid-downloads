@@ -652,30 +652,25 @@ class oxUser extends oxBase
      */
     public function exists($sOXID = null)
     {
-        $oDb = oxDb::getDb();
         if (!$sOXID) {
             $sOXID = $this->getId();
         }
+        //#5901 if physical record exists return true unconditionally
+        if (parent::exists($sOXID)) {
+            $this->setId($sOXID);
+            return true;
+        }
 
+        //additional username check
+        //This part is used by not yet saved user object, to detect the case when such username exists in db.
+        //Basically it is called when anonymous visitor enters existing username for newsletter subscription
+        //see Newsletter::send()
+        //TODO: transfer this validation to newsletter part
         $sShopSelect = '';
         if (!$this->_blMallUsers && $this->oxuser__oxrights->value != 'malladmin') {
             $sShopSelect = ' AND oxshopid = "' . $this->getConfig()->getShopId() . '" ';
         }
-
-        //#4543 Query optimisation by splitting it into two, might need an logics optimisation as well
-        if ($sOXID) {
-            $sSelect = 'SELECT oxid FROM ' . $this->getViewName() . '
-                    WHERE ( oxid = ' . $oDb->quote($sOXID) . ' ) ';
-            $sSelect .= $sShopSelect;
-
-            if (($sOxid = $oDb->getOne($sSelect, false, false))) {
-                // update - set oxid
-                $this->setId($sOxid);
-
-                return true;
-            }
-        }
-
+        $oDb = oxDb::getDb();
         $sSelect = 'SELECT oxid FROM ' . $this->getViewName() . '
                     WHERE ( oxusername = ' . $oDb->quote($this->oxuser__oxusername->value) . ' ) ';
         $sSelect .= $sShopSelect;
