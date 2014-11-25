@@ -226,25 +226,30 @@ class oxUtilsUrl extends oxSuperCfg
      */
     public function processUrl( $sUrl, $blFinalUrl = true, $aParams = null, $iLang = null )
     {
-        $aAddParams = $this->getAddUrlParams();
-        if ( is_array($aParams) && count( $aParams ) ) {
-            $aAddParams = array_merge( $aAddParams, $aParams );
-        }
+        $aParams = is_array($aParams)? $aParams : array();
 
-        $ret = oxRegistry::getSession()->processUrl(
-            oxRegistry::getLang()->processUrl(
-                $this->appendUrl(
+        $sUrlHost = @parse_url($sUrl, PHP_URL_HOST);
+        $sShopHost = @parse_url($this->getConfig()->getShopUrl(), PHP_URL_HOST);
+        $isCurrentShop = is_null($sUrlHost) || $sShopHost == $sUrlHost;
+
+        if ( $isCurrentShop ) {
+            $aParams = array_merge($this->getAddUrlParams(), $aParams);
+        }
+        $sUrl = $this->appendUrl( $sUrl, $aParams );
+
+        if ( $isCurrentShop ) {
+            $sUrl = oxRegistry::getSession()->processUrl(
+                oxRegistry::getLang()->processUrl(
                     $sUrl,
-                    $aAddParams
-                ),
-                $iLang
-            )
-        );
+                    $iLang
+                )
+            );
+        }
 
         if ($blFinalUrl) {
-            $ret = getStr()->preg_replace('/(\?|&(amp;)?)$/', '', $ret);
+            $sUrl = getStr()->preg_replace('/(\?|&(amp;)?)+$/', '', $sUrl);
         }
-        return $ret;
+        return $sUrl;
     }
 
     /**

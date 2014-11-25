@@ -768,6 +768,16 @@ class oxArticle extends oxI18n implements oxIArticle, oxIUrl
     }
 
     /**
+     * Getter for do we load parent data
+     *
+     * @return bool
+     */
+    public function getLoadParentData()
+    {
+        return $this->_blLoadParentData;
+    }
+
+    /**
      * Set _blSkipAbPrice value. If is set to true, then "From price" is not calculated for this object.
      *
      * @param bool $blSkipAbPrice Whether to skip "From" price loading
@@ -1600,7 +1610,7 @@ class oxArticle extends oxI18n implements oxIArticle, oxIUrl
             }
         }
 
-        return self::$_aArticleCats[$this->getId()] = $aRet;
+        return self::$_aArticleCats[$this->getId()] = array_unique($aRet);
     }
 
     /**
@@ -3988,6 +3998,9 @@ class oxArticle extends oxI18n implements oxIArticle, oxIUrl
      */
     protected function _update()
     {
+
+        $this->setUpdateSeo(true);
+        $this->_setUpdateSeoOnFieldChange('oxtitle');
 
         $this->_skipSaveFields();
 
