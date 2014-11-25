@@ -21,13 +21,42 @@
  */
 
 /**
- * Theme Information
+ * Class oxDecryptor
  */
-$aTheme = array(
-    'id'           => 'azure',
-    'title'        => 'Azure',
-    'description'  => 'Azure theme by OXID eSales AG',
-    'thumbnail'    => 'theme.jpg',
-    'version'      => '1.3.2',
-    'author'       => 'OXID',
-);
+class oxDecryptor
+{
+
+    /**
+     * Decrypts string with given key.
+     *
+     * @param string $sString string
+     * @param string $sKey key
+     * @return string
+     */
+    public function decrypt( $sString, $sKey )
+    {
+        $sKey = $this->_formKey($sKey, $sString);
+
+        $sString = substr( $sString, 3 );
+        $sString = str_replace( '!', '=', $sString );
+        $sString = base64_decode( $sString );
+        $sString = $sString ^ $sKey;
+
+        return substr( $sString, 2, -2 );
+    }
+
+    /**
+     * Forms key for use in encoding.
+     *
+     * @param string $sKey
+     * @param string $sString
+     * @return string
+     */
+    protected function _formKey($sKey, $sString)
+    {
+        $sKey = '_' . $sKey;
+        $iKeyLength = (strlen( $sString ) / strlen( $sKey )) + 5;
+
+        return str_repeat( $sKey, $iKeyLength );
+    }
+}

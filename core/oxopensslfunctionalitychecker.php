@@ -21,13 +21,17 @@
  */
 
 /**
- * Theme Information
+ * Class is responsible for openSSL functionality availability checking.
  */
-$aTheme = array(
-    'id'           => 'azure',
-    'title'        => 'Azure',
-    'description'  => 'Azure theme by OXID eSales AG',
-    'thumbnail'    => 'theme.jpg',
-    'version'      => '1.3.2',
-    'author'       => 'OXID',
-);
+class oxOpenSSLFunctionalityChecker
+{
+    /**
+     * Checks if openssl_random_pseudo_bytes function is available.
+     *
+     * @return bool
+     */
+    public function isOpenSslRandomBytesGeneratorAvailable()
+    {
+        return function_exists('openssl_random_pseudo_bytes');
+    }
+}

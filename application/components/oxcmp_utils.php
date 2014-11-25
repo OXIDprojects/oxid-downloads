@@ -170,7 +170,11 @@ class oxcmp_utils extends oxView
      */
     public function toNoticeList( $sProductId = null, $dAmount = null, $aSel = null)
     {
-        $this->_toList( 'noticelist', $sProductId, $dAmount, $aSel );
+        if (!oxRegistry::getSession()->checkSessionChallenge()) {
+            return;
+        }
+
+        $this->_toList('noticelist', $sProductId, $dAmount, $aSel);
     }
 
     /**
@@ -185,6 +189,10 @@ class oxcmp_utils extends oxView
      */
     public function toWishList( $sProductId = null, $dAmount = null, $aSel = null )
     {
+        if (!oxRegistry::getSession()->checkSessionChallenge()) {
+            return;
+        }
+
         // only if enabled
         if ( $this->getViewConfig()->getShowWishlist() ) {
             $this->_toList( 'wishlist', $sProductId, $dAmount, $aSel );

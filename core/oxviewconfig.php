@@ -1424,4 +1424,51 @@ class oxViewConfig extends oxSuperCfg
         return $this->_sActiveTheme;
     }
 
+    /**
+     * Returns shop logo image file name from config option
+     *
+     * @return string
+     */
+    public function getShopLogo()
+    {
+        if (is_null($this->_sShopLogo)) {
+
+            $sLogoImage = $this->getConfig()->getConfigParam('sShopLogo');
+            if (empty($sLogoImage)) {
+                $sLogoImage = "logo.png";
+            }
+
+            $this->setShopLogo($sLogoImage);
+        }
+
+        return $this->_sShopLogo;
+    }
+
+    /**
+     * Sets shop logo
+     *
+     * @param string $sLogo shop logo image file name
+     *
+     * @return null
+     */
+    public function setShopLogo($sLogo)
+    {
+        $this->_sShopLogo = $sLogo;
+    }
+
+    /**
+     * retrieve session challenge token from session
+     *
+     * @return string
+     */
+    public function getSessionChallengeToken()
+    {
+        if (oxRegistry::getSession()->isSessionStarted()) {
+            $sessionChallengeToken = $this->getSession()->getSessionChallengeToken();
+        } else {
+            $sessionChallengeToken = "";
+        }
+
+        return $sessionChallengeToken;
+    }
 }

@@ -21,13 +21,22 @@
  */
 
 /**
- * Theme Information
+ * Encrypt string with sha512 algorithm.
  */
-$aTheme = array(
-    'id'           => 'azure',
-    'title'        => 'Azure',
-    'description'  => 'Azure theme by OXID eSales AG',
-    'thumbnail'    => 'theme.jpg',
-    'version'      => '1.3.2',
-    'author'       => 'OXID',
-);
+class oxSha512Hasher extends oxHasher
+{
+    /** Algorithm name. */
+    const HASHING_ALGORITHM_SHA512 = 'sha512';
+
+    /**
+     * Encrypt string.
+     *
+     * @param string $sString
+     *
+     * @return string
+     */
+    public function hash($sString)
+    {
+        return hash(self::HASHING_ALGORITHM_SHA512, $sString);
+    }
+}

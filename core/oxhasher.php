@@ -21,13 +21,16 @@
  */
 
 /**
- * Theme Information
+ * Hasher abstract class
  */
-$aTheme = array(
-    'id'           => 'azure',
-    'title'        => 'Azure',
-    'description'  => 'Azure theme by OXID eSales AG',
-    'thumbnail'    => 'theme.jpg',
-    'version'      => '1.3.2',
-    'author'       => 'OXID',
-);
+abstract class oxHasher
+{
+    /**
+     * Hash string.
+     *
+     * @param string $sString string for hashing.
+     *
+     * @return string
+     */
+    abstract public function hash($sString);
+}

@@ -21,13 +21,41 @@
  */
 
 /**
- * Theme Information
+ * Hash password together with salt, using set hash algorithm
  */
-$aTheme = array(
-    'id'           => 'azure',
-    'title'        => 'Azure',
-    'description'  => 'Azure theme by OXID eSales AG',
-    'thumbnail'    => 'theme.jpg',
-    'version'      => '1.3.2',
-    'author'       => 'OXID',
-);
+class oxPasswordHasher
+{
+    /**
+     * @var oxHasher
+     */
+    private $_ohasher = null;
+
+    /**
+     * @return oxHasher
+     */
+    protected function _getHasher()
+    {
+        return $this->_ohasher;
+    }
+
+    /**
+     * @param oxHasher $oHasher hasher.
+     */
+    public function __construct($oHasher)
+    {
+        $this->_ohasher = $oHasher;
+    }
+
+    /**
+     * Hash password with a salt.
+     *
+     * @param string $sPassword not hashed password.
+     * @param string $sSalt salt string.
+     *
+     * @return string
+     */
+    public function hash($sPassword, $sSalt)
+    {
+        return $this->_getHasher()->hash($sPassword . $sSalt);
+    }
+}

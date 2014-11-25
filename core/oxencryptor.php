@@ -21,13 +21,43 @@
  */
 
 /**
- * Theme Information
+ * Class oxEncryptor
  */
-$aTheme = array(
-    'id'           => 'azure',
-    'title'        => 'Azure',
-    'description'  => 'Azure theme by OXID eSales AG',
-    'thumbnail'    => 'theme.jpg',
-    'version'      => '1.3.2',
-    'author'       => 'OXID',
-);
+class oxEncryptor
+{
+    /**
+     * Encrypts string with given key.
+     *
+     * @param string $sString
+     * @param string $sKey
+     * @return string
+     */
+    public function encrypt($sString, $sKey)
+    {
+        $sString = "ox{$sString}id";
+
+        $sKey = $this->_formKey($sKey, $sString);
+
+        $sString = $sString ^ $sKey;
+        $sString = base64_encode ( $sString );
+        $sString = str_replace( "=", "!", $sString );
+
+        return "ox_$sString";
+    }
+
+    /**
+     * Forms key for use in encoding.
+     *
+     * @param string $sKey
+     * @param string $sString
+     * @return string
+     */
+    protected function _formKey($sKey, $sString)
+    {
+        $sKey = '_' . $sKey;
+        $iKeyLength = (strlen( $sString ) / strlen( $sKey )) + 5;
+
+        return str_repeat( $sKey, $iKeyLength );
+    }
+
+}
